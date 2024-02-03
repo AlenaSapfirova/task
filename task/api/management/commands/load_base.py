@@ -8,7 +8,11 @@ class Command(BaseCommand):
     help = 'load base with mixer.blend'
 
     def handle(self, *args, **options):
-        user = mixer.cycle(100).blend(User)
-        post = mixer.cycle(100).blend(Post)
-        subscribe = mixer.cycle(100).blend(Subscribtion)
-        print(post, subscribe, user)
+        for _ in range(1000):
+            user = mixer.blend(User)
+            post = mixer.blend(Post)
+            subscribe = mixer.blend(Subscribtion)
+            user.save()
+            post.save()
+            subscribe.save()
+        print('Загрузка завершена')

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -136,3 +138,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_TIMEZONE = 'Europe/Moscow'
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_RESULT_BACKEND = 'django-db'
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+
