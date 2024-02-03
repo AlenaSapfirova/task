@@ -20,7 +20,7 @@ class PostAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def get(self, request):
-        posts = Post.objects.filter(author=request.user)
+        posts = Post.objects.filter(author=request.user)[:500]
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
