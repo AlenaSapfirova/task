@@ -11,5 +11,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('posts/', PostAPIView.as_view(), name='posts'),
     path('posts/<id>/', PostDetailAPIView.as_view(), name='post_detail'),
-    path('post/all/', AllPostAPIView.as_view()), 
+    path('post/all/', AllPostAPIView.as_view(), name='list_posts'),
 ]

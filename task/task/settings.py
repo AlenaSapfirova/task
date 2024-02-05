@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-# from dotenv import load_dotenv 
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'task.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPagination',
     'PAGE_SIZE': 10,
-} 
+}
 
 DATABASES = {
     'default': {
@@ -146,11 +146,8 @@ CELERY_TIMEZONE = 'Europe/Moscow'
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-CELERY_RESULT_BACKEND = 'django-db'
-# CELERY_BROKER_URL = "redis://redis:6379/0"
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
-CELERY_BROKER_URL = 'redis://localhost:6379/'
-
-
-
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = os.getenv('REDIS_PORT')
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+DJANGO_SETTINGS_MODULE = os.getenv('DJANGO_SETTINGS_MODULE')
