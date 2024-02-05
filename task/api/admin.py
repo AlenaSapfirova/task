@@ -6,7 +6,7 @@ from .models import Post, User, Subscribtion
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'header', 'body', 'date_created', 'author']
     list_display_links = None
-    list_editable = ['id', 'header', 'body', 'author']
+    list_editable = ['header', 'body', 'author']
 
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ['user', 'author']
