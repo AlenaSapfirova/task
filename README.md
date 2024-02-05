@@ -31,12 +31,12 @@ sudo apt install redis
 * Запустить сервер в терминале `redis-server`
 * В другом терминале(2) перейти в папку `task` и запустить celery
 ```
-cd wellcards
+cd task
 python -m celery -A task worker -l info -B # флаг -B только для linux
 ```
 * В первом терминале запустить сервер Django + cделать миграции
 ```
-cd wellcards
+cd task
 python manage.py createsuperuser
 python manage.py makemigrations
 python manage.py migrate
