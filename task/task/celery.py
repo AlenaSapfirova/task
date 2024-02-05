@@ -13,8 +13,7 @@ app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
     'print_dayly_latest_posts': {
-    'task': 'api.tasks.print_posts',
-    'schedule': crontab(minute=52, hour=16)
+        'task': 'api.tasks.print_posts',
+        'schedule': crontab(minute=52, hour=16)
     }
-
 }

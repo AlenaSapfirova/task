@@ -1,4 +1,4 @@
-celery==5.3.6
+celery[redis]==5.3.4
 Django==3.2.18
 djangorestframework==3.14.0
 mixer==7.2.2
@@ -7,3 +7,4 @@ psycopg2-binary==2.9.3
 python-dateutil==2.8.2
 python-dotenv==1.0.1
 pyflakes==3.0.1
+redis==4.6.0
