@@ -2,10 +2,10 @@ from rest_framework import serializers
 from .models import User, Post, Subscribtion
 
 class PostSerializer(serializers.ModelSerializer):
-
+    author = serializers.StringRelatedField()
     class Meta:
         model = Post
-        fields = ['header', 'body','id']
+        fields = ['header', 'body','id', 'author']
     
 
 class PostSubscribeSerializer(serializers.ModelSerializer):

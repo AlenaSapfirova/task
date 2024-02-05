@@ -24,6 +24,14 @@ class PostAPIView(APIView):
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
+class AllPostAPIView(APIView):
+    serializer_class = PostSerializer
+
+    def get(self, request):
+        posts = Post.objects.all()
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+  
 
 class PostDetailAPIView(APIView):
     serializer_class = PostSerializer

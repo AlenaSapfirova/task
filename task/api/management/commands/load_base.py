@@ -10,9 +10,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for _ in range(1000):
             user = mixer.blend(User)
-            post = mixer.blend(Post)
-            subscribe = mixer.blend(Subscribtion)
             user.save()
+            post = mixer.blend(Post)
             post.save()
+            subscribe = mixer.blend(Subscribtion)
             subscribe.save()
         print('Загрузка завершена')

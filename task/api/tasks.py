@@ -1,7 +1,5 @@
 from celery import shared_task
 from .models import Subscribtion, Post
-from django.core.mail import send_mail
-from task.settings import EMAIL_HOST_USER
 
 
 
@@ -9,7 +7,8 @@ from task.settings import EMAIL_HOST_USER
 def print_posts():
     subscriptions = Subscribtion.objects.all()
     for subscription in subscriptions:
+        author = subscription.author
+        a = Post.objects.filter(author=author)
         latest_posts = Post.objects.filter(author=subscription.author).order_by('date_created')[:5]
-        message = [post.header for post in latest_posts]
-        print(message)
-        print('Подборка отправлена пользователю')
+        print(latest_posts)
+        

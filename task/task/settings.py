@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+# from dotenv import load_dotenv 
+
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,7 @@ SECRET_KEY = 'django-insecure-ai+zet3lpm(rzq6h^7a2^r*ng^xnubm_-pr&(419j7v$95c_n!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,15 +84,14 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'task'),
-        'USER': os.environ.get('POSTGRES_USER', 'admin'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', '300613Ivan%'),
-        'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),
+        'NAME': os.getenv('POSTGRES_DB', 'task'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', '300613ivan'),
+        'HOST': os.getenv('DATABASE_HOST', ''),
         'PORT': '5432',
 
     }
 }
-
 
 
 # Password validation
@@ -130,6 +132,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/media/'
+STATIC_ROOT = BASE_DIR / 'collected_static'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -140,8 +147,10 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
 CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_BROKER_URL = "redis://redis:6379/0"
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379/'
+
 
 
