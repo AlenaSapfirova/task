@@ -1,3 +1,5 @@
+скачать проект git clone https://github.com/AlenaSapfirova/task
+
 Создать файл .env
 ```
 touch .env
